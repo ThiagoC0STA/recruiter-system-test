@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { User, Mail, Lock, CheckCircle, Plus, Loader2, AlertCircle } from 'lucide-react';
+import { User, Mail, Lock, CheckCircle, Plus, Loader2, AlertCircle, Building2 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 const Register: React.FC = () => {
@@ -98,45 +98,37 @@ const Register: React.FC = () => {
   };
 
   return (
-            <div className="auth-container">
-
-
-      <div className="auth-card animate-fade-in">
-        <div className="card">
-          <div className="card-header">
-            <div className="logo-container">
-              <div className="logo-icon">
-                <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12">
-                  <path
-                    d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-4 py-8">
+      <div className="w-full max-w-md animate-fade-in">
+        <div className="bg-white rounded-2xl shadow-soft p-8 border border-gray-100">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <div className="flex justify-center mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-secondary-500 to-secondary-600 rounded-2xl flex items-center justify-center text-white shadow-lg">
+                <Building2 className="w-8 h-8" />
               </div>
             </div>
-            <h1 className="card-title">Crie sua conta</h1>
-            <p className="card-subtitle">Junte-se à nossa plataforma de recrutamento</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Crie sua conta</h1>
+            <p className="text-gray-600">Junte-se à nossa plataforma de recrutamento</p>
           </div>
 
+          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
-              <div className="alert alert-error animate-pulse">
-                <AlertCircle className="w-5 h-5" />
-                <span>{error}</span>
+              <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg flex items-center gap-3 animate-pulse">
+                <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                <span className="text-sm font-medium">{error}</span>
               </div>
             )}
 
-            <div className="input-group">
-              <label className="input-label">
-                <User className="w-4 h-4 inline mr-2" />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                <User className="w-4 h-4 inline mr-2 text-gray-500" />
                 Nome completo
               </label>
               <input
                 type="text"
-                className="input"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm transition-all duration-200 bg-white text-gray-900 focus:outline-none focus:border-secondary-500 focus:ring-2 focus:ring-secondary-200 placeholder:text-gray-400"
                 placeholder="Seu nome completo"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -144,14 +136,14 @@ const Register: React.FC = () => {
               />
             </div>
 
-            <div className="input-group">
-              <label className="input-label">
-                <Mail className="w-4 h-4 inline mr-2" />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                <Mail className="w-4 h-4 inline mr-2 text-gray-500" />
                 Email
               </label>
               <input
                 type="email"
-                className="input"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm transition-all duration-200 bg-white text-gray-900 focus:outline-none focus:border-secondary-500 focus:ring-2 focus:ring-secondary-200 placeholder:text-gray-400"
                 placeholder="seu@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -159,16 +151,14 @@ const Register: React.FC = () => {
               />
             </div>
 
-            <div className="input-group">
-              <label className="input-label">
-                <svg className="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                <Lock className="w-4 h-4 inline mr-2 text-gray-500" />
                 Senha
               </label>
               <input
                 type="password"
-                className="input"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm transition-all duration-200 bg-white text-gray-900 focus:outline-none focus:border-secondary-500 focus:ring-2 focus:ring-secondary-200 placeholder:text-gray-400"
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -177,14 +167,14 @@ const Register: React.FC = () => {
               />
             </div>
 
-            <div className="input-group">
-              <label className="input-label">
-                <CheckCircle className="w-4 h-4 inline mr-2" />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                <CheckCircle className="w-4 h-4 inline mr-2 text-gray-500" />
                 Confirmar senha
               </label>
               <input
                 type="password"
-                className="input"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm transition-all duration-200 bg-white text-gray-900 focus:outline-none focus:border-secondary-500 focus:ring-2 focus:ring-secondary-200 placeholder:text-gray-400"
                 placeholder="••••••••"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
@@ -195,7 +185,7 @@ const Register: React.FC = () => {
 
             <button
               type="submit"
-              className="btn btn-secondary w-full"
+              className="w-full bg-secondary-600 text-white py-3 px-6 rounded-lg font-medium text-sm transition-all duration-200 hover:bg-secondary-700 hover:shadow-md hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none disabled:hover:shadow-none flex items-center justify-center gap-2"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -211,10 +201,13 @@ const Register: React.FC = () => {
               )}
             </button>
 
-            <div className="text-center">
-              <p className="text-gray-600 mb-4">
+            <div className="text-center pt-4">
+              <p className="text-gray-600 text-sm">
                 Já tem uma conta?{' '}
-                <Link to="/login" className="text-secondary hover:text-primary font-medium transition-colors">
+                <Link 
+                  to="/login" 
+                  className="text-secondary-600 hover:text-secondary-700 font-medium transition-colors duration-200 underline-offset-2 hover:underline"
+                >
                   Faça login aqui
                 </Link>
               </p>
@@ -222,8 +215,6 @@ const Register: React.FC = () => {
           </form>
         </div>
       </div>
-
-
     </div>
   );
 };

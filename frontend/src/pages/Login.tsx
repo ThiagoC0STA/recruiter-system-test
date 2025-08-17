@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Mail, Lock, User, Loader2, AlertCircle } from 'lucide-react';
+import { Mail, Lock, User, Loader2, AlertCircle, Building2 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
 const Login: React.FC = () => {
@@ -63,59 +63,37 @@ const Login: React.FC = () => {
   };
 
   return (
-            <div className="auth-container">
-
-
-      <div className="auth-card animate-fade-in">
-        <div className="card">
-          <div className="card-header">
-            <div className="logo-container">
-              <div className="logo-icon">
-                <svg viewBox="0 0 24 24" fill="none" className="w-12 h-12">
-                  <path
-                    d="M12 2L2 7L12 12L22 7L12 2Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M2 17L12 22L22 17"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M2 12L12 17L22 12"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-4 py-8">
+      <div className="w-full max-w-md animate-fade-in">
+        <div className="bg-white rounded-2xl shadow-soft p-8 border border-gray-100">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <div className="flex justify-center mb-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center text-white shadow-lg">
+                <Building2 className="w-8 h-8" />
               </div>
             </div>
-            <h1 className="card-title">Bem-vindo de volta!</h1>
-            <p className="card-subtitle">Entre com suas credenciais para continuar</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Bem-vindo de volta!</h1>
+            <p className="text-gray-600">Entre com suas credenciais para continuar</p>
           </div>
 
+          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
-              <div className="alert alert-error animate-pulse">
-                <AlertCircle className="w-5 h-5" />
-                <span>{error}</span>
+              <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg flex items-center gap-3 animate-pulse">
+                <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                <span className="text-sm font-medium">{error}</span>
               </div>
             )}
 
-            <div className="input-group">
-              <label className="input-label">
-                <Mail className="w-4 h-4 inline mr-2" />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                <Mail className="w-4 h-4 inline mr-2 text-gray-500" />
                 Email
               </label>
               <input
                 type="email"
-                className="input"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm transition-all duration-200 bg-white text-gray-900 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200 placeholder:text-gray-400"
                 placeholder="seu@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -123,14 +101,14 @@ const Login: React.FC = () => {
               />
             </div>
 
-            <div className="input-group">
-              <label className="input-label">
-                <Lock className="w-4 h-4 inline mr-2" />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                <Lock className="w-4 h-4 inline mr-2 text-gray-500" />
                 Senha
               </label>
               <input
                 type="password"
-                className="input"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm transition-all duration-200 bg-white text-gray-900 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200 placeholder:text-gray-400"
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -140,7 +118,7 @@ const Login: React.FC = () => {
 
             <button
               type="submit"
-              className="btn btn-primary w-full"
+              className="w-full bg-primary-600 text-white py-3 px-6 rounded-lg font-medium text-sm transition-all duration-200 hover:bg-primary-700 hover:shadow-md hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none disabled:hover:shadow-none flex items-center justify-center gap-2"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -156,10 +134,13 @@ const Login: React.FC = () => {
               )}
             </button>
 
-            <div className="text-center">
-              <p className="text-gray-600 mb-4">
+            <div className="text-center pt-4">
+              <p className="text-gray-600 text-sm">
                 Não tem uma conta?{' '}
-                <Link to="/register" className="text-primary hover:text-primary-dark font-medium transition-colors">
+                <Link 
+                  to="/register" 
+                  className="text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200 underline-offset-2 hover:underline"
+                >
                   Registre-se aqui
                 </Link>
               </p>
@@ -167,8 +148,6 @@ const Login: React.FC = () => {
           </form>
         </div>
       </div>
-
-
     </div>
   );
 };

@@ -1,15 +1,11 @@
 import React from 'react';
+import { Loader2 } from 'lucide-react';
 
 const LoadingSpinner: React.FC = () => {
   return (
-    <div style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      height: '100vh',
-      fontSize: '1.2rem'
-    }}>
-      Carregando...
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 gap-4">
+      <Loader2 className="w-8 h-8 animate-spin text-primary-600" />
+      <p className="text-gray-600 text-lg font-medium">Carregando...</p>
     </div>
   );
 };

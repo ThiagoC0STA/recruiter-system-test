@@ -21,42 +21,40 @@ const App: React.FC = () => {
   return (
     <div>
       {user && <Navbar />}
-      <div className="container">
-        <Routes>
-          <Route 
-            path="/login" 
-            element={user ? <Navigate to="/dashboard" /> : <Login />} 
-          />
-          <Route 
-            path="/register" 
-            element={user ? <Navigate to="/dashboard" /> : <Register />} 
-          />
-          <Route 
-            path="/dashboard" 
-            element={user ? <Dashboard /> : <Navigate to="/login" />} 
-          />
-          <Route 
-            path="/jobs" 
-            element={user ? <Jobs /> : <Navigate to="/login" />} 
-          />
-          <Route 
-            path="/jobs/:id" 
-            element={user ? <JobDetails /> : <Navigate to="/login" />} 
-          />
-          <Route 
-            path="/applications" 
-            element={user ? <Applications /> : <Navigate to="/login" />} 
-          />
-          <Route 
-            path="/create-job" 
-            element={user ? <CreateJob /> : <Navigate to="/login" />} 
-          />
-          <Route 
-            path="/" 
-            element={user ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} 
-          />
-        </Routes>
-      </div>
+      <Routes>
+        <Route 
+          path="/login" 
+          element={user ? <Navigate to="/dashboard" /> : <Login />} 
+        />
+        <Route 
+          path="/register" 
+          element={user ? <Navigate to="/dashboard" /> : <Register />} 
+        />
+        <Route 
+          path="/dashboard" 
+          element={user ? <Dashboard /> : <Navigate to="/login" />} 
+        />
+        <Route 
+          path="/jobs" 
+          element={user ? <Jobs /> : <Navigate to="/login" />} 
+        />
+        <Route 
+          path="/jobs/:id" 
+          element={user ? <JobDetails /> : <Navigate to="/login" />} 
+        />
+        <Route 
+          path="/applications" 
+          element={user ? <Applications /> : <Navigate to="/login" />} 
+        />
+        <Route 
+          path="/create-job" 
+          element={user ? <CreateJob /> : <Navigate to="/login" />} 
+        />
+        <Route 
+          path="/" 
+          element={user ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} 
+        />
+      </Routes>
     </div>
   );
 };

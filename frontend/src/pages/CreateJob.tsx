@@ -49,46 +49,49 @@ const CreateJob: React.FC = () => {
   };
 
   return (
-    <div className="container">
-      <div className="create-job-container">
-        <div className="create-job-header">
-          <div className="header-content">
-            <h1 className="page-title">
-              <Briefcase className="w-8 h-8" />
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 gap-6">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2 flex items-center gap-3">
+              <Briefcase className="w-8 h-8 text-primary-600" />
               Criar Nova Vaga
             </h1>
-            <p className="page-subtitle">
+            <p className="text-lg text-gray-600">
               Publique uma nova oportunidade de emprego
             </p>
           </div>
           
           <button 
             onClick={() => navigate('/jobs')}
-            className="btn btn-outline"
+            className="bg-white text-gray-600 border border-gray-300 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:bg-gray-50 hover:border-gray-400 flex items-center gap-2"
           >
             <X className="w-5 h-5" />
             Cancelar
           </button>
         </div>
 
-        <div className="create-job-card">
+        {/* Form Card */}
+        <div className="bg-white rounded-2xl shadow-soft p-8 border border-gray-100">
           {error && (
-            <div className="alert alert-error">
-              <X className="w-5 h-5" />
-              <span>{error}</span>
+            <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg flex items-center gap-3 mb-6">
+              <X className="w-5 h-5 flex-shrink-0" />
+              <span className="font-medium">{error}</span>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="create-job-form">
-            <div className="form-grid">
-              <div className="input-group">
-                <label className="input-label">
-                  <Briefcase className="w-4 h-4" />
+          <form onSubmit={handleSubmit} className="space-y-8">
+            {/* Grid Fields */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <Briefcase className="w-4 h-4 inline mr-2 text-gray-500" />
                   Título da Vaga *
                 </label>
                 <input
                   type="text"
-                  className="input"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm transition-all duration-200 bg-white text-gray-900 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200 placeholder:text-gray-400"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   required
@@ -96,14 +99,14 @@ const CreateJob: React.FC = () => {
                 />
               </div>
 
-              <div className="input-group">
-                <label className="input-label">
-                  <Building2 className="w-4 h-4" />
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <Building2 className="w-4 h-4 inline mr-2 text-gray-500" />
                   Empresa *
                 </label>
                 <input
                   type="text"
-                  className="input"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm transition-all duration-200 bg-white text-gray-900 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200 placeholder:text-gray-400"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
                   required
@@ -111,14 +114,14 @@ const CreateJob: React.FC = () => {
                 />
               </div>
 
-              <div className="input-group">
-                <label className="input-label">
-                  <MapPin className="w-4 h-4" />
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <MapPin className="w-4 h-4 inline mr-2 text-gray-500" />
                   Localização *
                 </label>
                 <input
                   type="text"
-                  className="input"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm transition-all duration-200 bg-white text-gray-900 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200 placeholder:text-gray-400"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   required
@@ -126,13 +129,13 @@ const CreateJob: React.FC = () => {
                 />
               </div>
 
-              <div className="input-group">
-                <label className="input-label">
-                  <Clock className="w-4 h-4" />
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <Clock className="w-4 h-4 inline mr-2 text-gray-500" />
                   Tipo de Contrato *
                 </label>
                 <select
-                  className="input"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm transition-all duration-200 bg-white text-gray-900 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200"
                   value={type}
                   onChange={(e) => setType(e.target.value)}
                   required
@@ -143,14 +146,14 @@ const CreateJob: React.FC = () => {
                 </select>
               </div>
 
-              <div className="input-group">
-                <label className="input-label">
-                  <DollarSign className="w-4 h-4" />
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <DollarSign className="w-4 h-4 inline mr-2 text-gray-500" />
                   Salário (opcional)
                 </label>
                 <input
                   type="text"
-                  className="input"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm transition-all duration-200 bg-white text-gray-900 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200 placeholder:text-gray-400"
                   value={salary}
                   onChange={(e) => setSalary(e.target.value)}
                   placeholder="Ex: R$ 5.000 - R$ 8.000"
@@ -158,13 +161,14 @@ const CreateJob: React.FC = () => {
               </div>
             </div>
 
-            <div className="input-group">
-              <label className="input-label">
-                <FileText className="w-4 h-4" />
+            {/* Description Field */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                <FileText className="w-4 h-4 inline mr-2 text-gray-500" />
                 Descrição da Vaga *
               </label>
               <textarea
-                className="input"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm transition-all duration-200 bg-white text-gray-900 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-200 placeholder:text-gray-400 resize-vertical"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 required
@@ -173,10 +177,11 @@ const CreateJob: React.FC = () => {
               />
             </div>
 
-            <div className="form-actions">
+            {/* Form Actions */}
+            <div className="pt-6 border-t border-gray-200">
               <button 
                 type="submit" 
-                className="btn btn-primary"
+                className="bg-primary-600 text-white px-8 py-4 rounded-lg font-medium text-lg transition-all duration-200 hover:bg-primary-700 hover:shadow-lg hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:transform-none disabled:hover:shadow-none flex items-center justify-center gap-2"
                 disabled={isLoading}
               >
                 {isLoading ? (
